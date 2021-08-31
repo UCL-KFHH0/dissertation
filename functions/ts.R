@@ -79,8 +79,7 @@ get_coefs = function(data, .formula, start = "2020-04-01", n_days = 4,
     geom_line() +
     theme_minimal() +
     theme(axis.title = element_blank(),
-          plot.caption = element_text(hjust = 0)) +
-    labs(caption = "Slope and intercept estimated using a bivariate linear regression, shown with \n95% confidence intervals")
+          plot.caption = element_text(hjust = 0))
   if (print_plot) print(plot) 
   
   if (is.null(.labs)) {
@@ -274,7 +273,8 @@ plot_summarised = function(data, x, y, .poly = 1) {
     ggplot(aes(var_x, var_y, label = location)) +
     geom_point(colour = "#00468B") +
     geom_smooth(method = lm, formula = y ~ poly(x, .poly, raw = TRUE), colour = "#42B540") +
-    labs(x = as_label(x), y = as_label(y))
+    labs(x = as_label(x), y = as_label(y), 
+         caption = "Slope and intercept estimated using a bivariate linear regression, \nshown with 95% confidence intervals")
 }
 # data %>% 
 #   plot_summarised(conf_govt, stringency_index)
